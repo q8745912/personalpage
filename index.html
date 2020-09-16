@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My page</title>
+  <meta name="viewport" content="width=device-width, initial-scale-1">
+  <link rel="stylesheet" type="text/css" href="myStyle.css">
+  <script src="jquery-3.5.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $(".quotes").hide();
+      $(".quotes:nth-child(1)").fadeIn("slow"); 
+      let current = 1;   //設定當前quote的位置
+      let max = $(".slideshowul li").length;
+
+      startChange();
+      //console.log(max);
+
+          function prev(){
+            $(".quotes").hide();
+            current -= 1;
+
+            if(current ==0){
+                current = max;
+            }
+            $(".quotes:nth-child(" + current + ")").fadeIn("slow");
+          }
+              function next(){
+                $(".quotes").hide();
+                current += 1;
+
+                if(current ==max){
+                    current = 1;
+                }
+                $(".quotes:nth-child(" + current + ")").fadeIn("slow");
+              }
+              function startChange(){
+                changeIt = setInterval(function(){next();}, 4000);
+              }
+              function stoptChange(){
+                clearInterval(changeIt);
+              }
+              $(".spot.prev").click(function(){
+                  stoptChange();
+                  prev();
+                  startChange();
+              });
+              $(".spot.next").click(function(){
+                  stoptChange();
+                  next();
+                  startChange();
+              });
+
+
+   // your jQuery...music
+		// under is music
+    });
+    $(function(){
+      $('#BackTop').click(function(){ 
+        $('html,body').animate({scrollTop:0}, 333);
+      });
+      $(window).scroll(function() {
+        if ( $(this).scrollTop() > 300 ){
+          $('#BackTop').fadeIn(222);
+        } else {
+          $('#BackTop').stop().fadeOut(222);
+        }
+      }).scroll();
+    });
+  </script>
+</head>
+<body>
+
+  <div class="content">
+   <h1>龔琪雅的個人網頁</h1>
+  <div class="slideshow-container">
+    <div class="spot prev"></div>
+    <ul class="slideshowul">
+      <li class="quotes">自己選的路 跪著也要走完</li>
+      <li class="quotes">It's better to regret what you have done than what you haven't.</li>
+      <li class="quotes">やらない後悔よりやった後悔をした方が良い</li>
+    </ul>
+    <div class="spot next"></div>
+
+
+    <div class="vertical-menu">  
+      <a href="">首頁簡介</a>
+      <a href="">sirla成果發表</a>
+      <a href="">校外活動</a>
+      <a href="#">敬請期待</a>
+    </div>
+
+
+  </div>
+  <div class = "article">
+      <h2 id="mySelfie">我的大頭貼</h2>
+      <img src="IMG_1352.JPG" style="width:300px;">
+      <h2 id="whoIsI">個人簡介</h2>
+      <p>
+      名字: 龔琪雅<br>
+      就讀學校: <a href="http://www.fju.edu.tw/" target="_blank">輔仁大學</a><br>
+      主修: <a href="http://web.lins.fju.edu.tw/chi/" target="_blank">圖書資訊學</a><br>
+      輔系: 英國語文學<br>
+      社團經歷: 圖資系羽球社、圖資系系學會、sirla讀書會<br>
+      語文能力: 英文&日文精通<br>
+      資訊能力: 網頁設計、 flask 、 python 、 django 、部分資訊安全與自然語言的內容。<br>
+      </p>
+      <h2>聯絡方式</h2>
+      <p>
+        手機號碼: 0975xxxxxx<br>
+        電子郵件: q874xxx@gmail.com<br>
+        社群網站: <a href="https://www.facebook.com/profile.php?id=100003346625167" target="_blank">FB</a><br>
+      </p>
+    <button type="button" id="BackTop" class="toTop-arrow"></button>
+  </div>
+  </div>
+
+</body>
+</html>
